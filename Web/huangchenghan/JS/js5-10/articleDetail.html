@@ -1,0 +1,110 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<strong>{{title}}</strong>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" name="myform">
+			<div class="form-group">
+				<label class="col-md-2 control-label">标题名称</label>
+				<div class="col-md-8">
+					<input class="form-control" 
+						   type="text" 
+						   ng-model="titleName" 
+						   name="titleName"
+						   ng-minlength="5"
+						   ng-maxlength="15"
+						   required/>
+					<span style="color:red" 
+						  ng-show="myform.titleName.$dirty && myform.titleName.$invalid"
+						  >
+                    <span ng-show="myform.titleName.$error.required">标题是必须的。
+                    </span>
+                    <span ng-show="myform.titleName.$error.maxlength">最大长度不能超过15</span>
+                    <span ng-show="myform.titleName.$error.minlength">最小长度不能低于5</span>
+                    </span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">类&nbsp;&nbsp;型</label>
+				<div class="col-md-2">
+					<select class="form-control" 
+						    ng-model="ArticleType" 
+						    name="ArticleType"
+						    required>
+						<option value="">请选择</option>
+						<option ng-repeat="(x,y) in Type" value="{{x}}">{{y}}</option>
+					</select>
+					<span style="color:red" 
+						  ng-show="myform.ArticleType.$dirty && myform.ArticleType.$invalid"
+						  >
+                    <span ng-show="myform.ArticleType.$error.required">类型是必须选择的。
+                    </span>
+                    </span>
+				</div>
+				<div class="col-md-2">
+					<select class="form-control" 
+						    ng-show="ArticleType==3" 
+						    ng-model="detailType"
+						    name="detailType"
+						    ng-required="ArticleType == 3">
+					    <option value="">请选择</option>
+					    <option ng-repeat="(x,y) in Industry" value="{{x}}">{{y}}</option>					    
+					</select>
+					<span style="color:red" 
+						  ng-show="myform.detailType.$dirty && myform.detailType.$invalid"
+						  >
+                    <span ng-show="myform.detailType.$error.required">类型是必须选择的。
+                    </span>
+                    </span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">说&nbsp;&nbsp;明</label>
+				<!--<div class="col-md-8">
+					<input class="form-control" type="text" ng-model="content" required/>
+				</div>-->
+				<div class="col-md-8">
+					<div ng-model="content" class="ueditor"></div>
+               </div>				
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label"
+					   >跳转链接</label>
+				<div class="col-md-8">
+					<input class="form-control" 
+						   type="url" 
+						   ng-model="URL1" 
+						   name="URL1"
+						   required/>
+					<span style="color:red" 
+						  ng-show="myform.URL1.$dirty && myform.URL1.$invalid"
+						  >
+                    <span ng-show="myform.URL1.$error.required">连接是必须选择输入的。
+                    </span>
+                    <span ng-show="myform.URL1.$error.url">请输入正确的链接格式</span>
+                    </span>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label class="col-md-2 control-label">配&nbsp;&nbsp;图</label>
+				<img-upload></img-upload>
+			</div>
+			<div class="form-group">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<button type="submit" 
+						    class="btn btn-success" 
+						    ng-disabled="myform.$invalid 
+						    || upImg == undefined"
+						    ng-click="pubArticle()">立即上线</button>
+					<button type="button" 
+						    class="btn btn-success" 
+						    ng-disabled="myform.$invalid 
+						    || upImg == undefined"
+						    ng-click="saveArticle()">存为草稿</button>
+					<button type="button" class="btn btn-default pull-right" data-ui-sref="dashboard.articleList">取消</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

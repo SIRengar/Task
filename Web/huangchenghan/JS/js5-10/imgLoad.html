@@ -1,0 +1,60 @@
+<div class="col-md-10">
+	<div class="col-md-12">
+		<label class="btn btn-primary" for="file2">选择文件</label>
+		<input id="file2" ng-model="change2" style="display: none;" type="file" />
+		<!--onchange="angular.element(this).scope().fileChange(this)"-->
+	</div>
+	<div class="col-md-12">
+		<img alt="配图浏览" id="img" class="img-responsive" ng-src="{{upImg}}" />
+	</div>
+	<div class="col-md-12">
+		<div class="table-responsive col-md-8">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>图片名</th>
+						<th>文件大小</th>
+						<th>进度</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-if="hasImg">
+						<td>{{name}}</td>
+						<td>{{size}}</td>
+						<td>
+							<div class="progress" style="margin-bottom: 0;">
+								<div class="progress-bar" role="progressbar" ng-style="{'width': progress + '%'}">
+
+								</div>
+							</div>
+						</td>
+						<td>
+							<span ng-show="show">
+                                                <i class="glyphicon glyphicon-ok"></i>
+                                            </span>
+							<span ng-show="hidden">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </span>
+						</td>
+						<td>
+							<div class="btn-group">
+								<button class="btn btn-success btn-xs" 
+									    ng-click="upLoad()" 
+									    type="button"
+									    ng-disabled="progress">
+									<span class="glyphicon glyphicon-upload">										
+									</span>
+								上传</button>
+								<button class="btn btn-danger btn-xs" ng-click="delete()" type="button">
+											    	    <span class="glyphicon glyphicon-trash"></span>删除
+											    </button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

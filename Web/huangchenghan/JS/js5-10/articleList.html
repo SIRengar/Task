@@ -1,0 +1,177 @@
+<div class="panel panel-default">
+	<form class="form-horizontal">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="col-md-4 control-label">发布时间</label>
+						<div class="col-md-8">
+							<input type="text" 
+								   class="form-control" 
+								   uib-datepicker-popup="yyyy-MM-dd" 
+								   ng-model="dt1" 
+								   is-open="pop1.opened" 
+								   ng-required="true" 
+								   close-text="关闭" 
+								   clear-text="清空" 
+								   current-text="今天" 
+								   datepicker-options="{maxDate:dt2}" 
+								   ng-click="openpop1()"
+								    />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="col-md-4 control-label text-center">——</label>
+						<div class="col-md-8">
+							<input type="text" 
+								   class="form-control" 
+								   uib-datepicker-popup="yyyy-MM-dd" 
+								   ng-model="dt2" 
+								   is-open="pop2.opened" 
+								   ng-required="true" 
+								   close-text="关闭" 
+								   clear-text="清空" 
+								   current-text="今天" 								   
+								   datepicker-options="{minDate:dt1}" 
+								   ng-click="openpop2()" />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="col-md-4 control-label">类 型</label>
+						<div class="col-md-8">
+							<select class="form-control" ng-model="type">
+								<option value="">全部</option>
+								<option ng-repeat="(x,y) in Type" value="{{x}}">{{y}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label class="col-md-4 control-label">状 态</label>
+						<div class="col-md-8">
+							<select class="form-control" ng-model="status" ng-change="abcdefg()">
+								<option value="">全部</option>
+								<option ng-repeat="(x,y) in Status" value="{{x}}">{{y}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="pull-right text-right col-md-4">
+					<div params="vm.searchParams">
+						<button type="button" class="btn btn-danger" ng-click="clear()">清空</button>
+						<button type="button" class="btn btn-success" ng-click="search()">搜索</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<strong>Article列表</strong>
+		<button type="button" ui-sref="dashboard.articleDetail" class="btn btn-xs btn-success pull-right margin-left-10">+新增</button>
+	</div>
+	<div class="panel-body table-responsive">
+		<table class="table table-striped add-table-border">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名称</th>
+					<th>类型</th>
+					<th>发布时间</th>
+					<th>修改时间</th>
+					<th>发布者</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="x in list">
+					<td>{{$index+1}}</td>
+					<td>{{x.title}}</td>
+					<td>{{x.type | typeFilter}}</td>
+					<td>{{x.createAt | date: "yyyy-MM-dd HH:mm:ss"}}</td>
+					<td>{{x.updateAt | date: "yyyy-MM-dd HH:mm:ss"}}</td>
+					<td>{{x.author}}</td>
+					<td>{{x.status | stateFilter}}</td>
+					<td>
+						<a class="btn btn-default" ng-click="changeStatus(x.id,x.status)">{{x.status | stateFilter1}}</a>
+						<a class="btn btn-success" ui-sref="dashboard.articleDetail({id:x.id})">编辑</a>
+						<a class="btn btn-danger" ng-click="delData(x.id)">删除</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!--<ul class="pagination pull-right" total="15">
+		<li class="pull-left paginationCenter">
+			每页显示
+			<input type="text" class="paginationGo text-center" /> 条
+		</li>
+		<li>
+			<a>首页</a>
+		</li>
+		<li></li>
+		<li class="active">
+			<a class="">1</a>
+		</li>
+		<li>
+			<a class="">2</a>
+		</li>
+		<li>
+			<a class="">></a>
+		</li>
+		<li>
+			<a class="">末页</a>
+		</li>
+		<li>
+			去第<input type="text" class="paginationGo text-center" />页
+			<a class="pull-right" style="border-radius: 0;">确定</a>
+		</li>
+	</ul>-->
+	<div class="pull-right .pagination">
+		<div class="pull-right">
+		<div class="pull-left pagination paginationCenter">
+			单页显示
+			<input type="text" 
+				   class="paginationGo text-center"
+				   ng-model="size" ng-init="10"/>
+			条
+		</div>
+	    <ul uib-pagination 
+		    total-items="totalItems" 
+		    items-per-page="items"
+	    	ng-model="currentPage" 
+	    	max-size="maxSize" 
+		    first-text="首页" 
+		    previous-text="<" 
+		    next-text=">" 
+		    last-text="末页" 
+		    boundary-links="true" 
+		    boundary-link-numbers="true" 
+		    ng-change="asdfg()">
+	    </ul>
+	     <div class="pull-right pagination paginationCenter">
+			去第
+			<input type="text" 
+				   class="paginationGo text-center"
+				   ng-model="jump" />
+			页
+			<button class="pull-right jump-btn"
+				    ng-click="OK111()">确定</button>
+		</div>
+	</div>
+	<!--<div class="pull-right">
+		去第<input type="text" class="paginationGo text-center" />页
+		<a class="pull-right" style="border-radius: 0;">确定</a>
+	</div>-->
+</div>

@@ -1,0 +1,15 @@
+<div class="sidebar-list">
+	<ul class="nav">
+		<li class="first-level" ng-repeat="first in sidebar">
+			<a ng-click="openList(first)">
+				<i class="glyphicon glyphicon-pencil"></i> {{first.firstList}}
+				<span class="glyphicon glyphicon-chevron-left" ng-class="first.isShow ? 'glyphicon-chevron-down' : 'glyphicon-chevron-left'"></span>
+			</a>
+			<ul class="second-level nav" ng-show="first.isShow">
+				<li ng-repeat="second in first.secondList">
+					<a class="second-list" ui-sref="{{second.url}}" ng-class="{openslide: state.includes(second.urls)}">{{second.title}}</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

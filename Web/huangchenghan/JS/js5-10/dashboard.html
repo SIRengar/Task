@@ -1,0 +1,95 @@
+<div ng-controller="dashboard" class="dashboard-bg">
+	<div class="navbar-header">
+		<div class="nav-title topbar-brand">苟头后台管理系统</div>
+		<button type="button" class="navbar-toggle navbar-toggle-button" data-toggle="collapse" data-target="#example-navbar-collapse" aria-expanded="true">
+                <span class="sr-only">Toggle</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+	</div>
+	<div class="topbar-content">
+		<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown pull-right">
+				<a class="dropdown-character"></a>
+				<span class="vertical">|</span>
+				<a class="dropdown-name">
+					<span class="ng-binding">admin</span>
+				</a>
+				<span class="vertical">|</span>
+				<a class="dropdown-toggle dropdown-close" id="outPage" ui-sref="login" ng-click="signOut()">
+					<span class="glyphicon glyphicon-off"></span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!--ptteng-sidebar -->
+	<div class="sidebar" role="navigation">
+		<!--旧的方案，用的是bootstrap中自带的手风琴效果
+			<div class="sidebar-nav navbar-collapse collapse" id="example-navbar-collapse">
+			<ul  class="nav panel-group" id="accordion">
+				<li class="nav-first-level panel ">
+					<div href="#information" data-toggle="collapse" data-parent="#accordion" class="collapsefirst">
+						<i class="glyphicon glyphicon-pencil"></i>
+						信息管理
+						<span class="iconfont"
+							  ng-class="{icondown:state.includes('dashboard.company')||state.includes('dashboard.job')}">&#xe61b;</span>
+						//<span class="glyphicon glyphicon-chevron-down"></span>
+					</div>
+					<ul class="nav nav-second-level side collapse panel-collapse" 
+						id="information"
+						ng-class="{ulblock:state.includes('dashboard.company')||state.includes('dashboard.job'),block:state.includes('dashboard.articleList')}">
+						<li >
+							<a ui-sref=".company" ng-class="{openslide:state.includes('dashboard.company')}">公司列表</a>
+						</li>
+						<li >
+							<a ui-sref=".job" ng-class="{openslide:state.includes('dashboard.job')}">职位列表</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-first-level panel">
+					<div href="#Article" data-toggle="collapse" data-parent="#accordion" class="collapsefirst">
+						<i class="glyphicon glyphicon-pencil"></i>
+						Article管理
+						<span class="iconfont"
+							  ng-class="{icondown:state.includes('dashboard.articleList')}">&#xe61b;</span>
+					</div>
+					<ul class="nav nav-second-level side collapse panel-collapse"
+						id="Article"
+						ng-class="{ulblock:state.includes('dashboard.articleList')}">
+						<li >
+							<a ui-sref=".articleList({page:1,size:10})" ng-class="{openslide:state.includes('dashboard.articleList')}">Article列表</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			
+		</div>-->
+		<!--<div class="sidebar-list">-->
+			<!--<ul class="nav">-->
+				<!--<li class="first-level" ng-repeat="first in sidebar">-->
+					<!--<a ng-click="openList(first)">-->
+						<!--<i class="glyphicon glyphicon-pencil"></i>-->
+						<!--{{first.firstList}}-->
+						<!--<span class="glyphicon glyphicon-chevron-left"-->
+							  <!--ng-class="first.isShow ? 'glyphicon-chevron-down' : 'glyphicon-chevron-left'"></span>-->
+					<!--</a>-->
+					<!--<ul class="second-level nav" ng-show="first.isShow">-->
+						<!--<li ng-repeat="second in first.secondList">-->
+							<!--<a class="second-list" -->
+							   <!--ui-sref="{{second.url}}"-->
+							   <!--ng-class="{openslide: state.includes(second.urls)}">{{second.title}}</a>-->
+						<!--</li>-->
+					<!--</ul>-->
+				<!--</li>-->
+			<!--</ul>-->
+		<!--</div>-->
+		<sidebar></sidebar>
+	</div>
+	
+	<div class="page-wrapper" id="page-wrapper">
+		<div ui-view="">
+			<div class="wel">Welcome!</div>		
+		</div>
+	</div>
+</div>
