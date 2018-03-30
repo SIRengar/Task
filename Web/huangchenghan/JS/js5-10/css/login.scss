@@ -1,0 +1,59 @@
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+$orange :#fd9f2a;
+.bg {
+    background:url(../img/login.jpg) no-repeat center;
+    background-size: cover;
+    height: 100vh;
+    min-height: 426px;
+    overflow: hidden;
+    >.login-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 46px 0;
+        text-align: center;
+        .login-circle {
+            border-radius: 50%;
+            width: 76px;
+            height: 76px;
+            margin-top: -38px;
+            box-shadow: 0 -3px 7px rgba(160,160,160,0.5);
+        }
+        .login-panel {
+            padding-top: 46px;
+            padding-bottom: 46px;
+            .login-user-icon {
+                background: url(../img/loginuser.png) 0 0;
+                width: 22px;
+                height: 25px;
+                position: absolute;
+                top: 96px;
+                left: 46px;
+            }
+            .login-psd-icon {
+                background: url(../img/loginpsd.png) 0 0;
+                width: 23px;
+                height: 26px;
+                position: absolute;
+                top: 156px;
+                left: 46px;
+            }
+            .pd-left-50 {
+                padding-left: 50px;
+            }
+        }        
+        .btn-submit {
+            color: #FFF;
+            background-color: $orange;
+            border-color: $orange;
+        }
+        .login-btn {
+            margin-top: 32px;
+        }
+    }
+}

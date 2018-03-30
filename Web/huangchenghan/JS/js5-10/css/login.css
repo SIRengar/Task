@@ -1,0 +1,55 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\000037}}
+.bg {
+  background: url(../img/login.jpg) no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  min-height: 426px;
+  overflow: hidden; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000313}}
+  .bg > .login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 46px 0;
+    text-align: center; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000320}}
+    .bg > .login-container .login-circle {
+      border-radius: 50%;
+      width: 76px;
+      height: 76px;
+      margin-top: -38px;
+      box-shadow: 0 -3px 7px rgba(160, 160, 160, 0.5); }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000327}}
+    .bg > .login-container .login-panel {
+      padding-top: 46px;
+      padding-bottom: 46px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000330}}
+      .bg > .login-container .login-panel .login-user-icon {
+        background: url(../img/loginuser.png) 0 0;
+        width: 22px;
+        height: 25px;
+        position: absolute;
+        top: 96px;
+        left: 46px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000338}}
+      .bg > .login-container .login-panel .login-psd-icon {
+        background: url(../img/loginpsd.png) 0 0;
+        width: 23px;
+        height: 26px;
+        position: absolute;
+        top: 156px;
+        left: 46px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000346}}
+      .bg > .login-container .login-panel .pd-left-50 {
+        padding-left: 50px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000350}}
+    .bg > .login-container .btn-submit {
+      color: #FFF;
+      background-color: #fd9f2a;
+      border-color: #fd9f2a; }
+@media -sass-debug-info{filename{font-family:file\:\/\/D\:\/it\/js5\/js6-10\/css\/login\.scss}line{font-family:\0000355}}
+    .bg > .login-container .login-btn {
+      margin-top: 32px; }
+
+/*# sourceMappingURL=login.css.map */
